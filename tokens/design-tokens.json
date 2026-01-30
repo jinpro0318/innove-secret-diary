@@ -1,0 +1,27 @@
+{
+  "color": {
+    "bg": {
+      "parchment": { "value": "#F5F1E6", "type": "color" },
+      "vintage": { "value": "#E8DCCA", "type": "color" }
+    },
+    "text": {
+      "sepia": { "value": "#4A3B32", "type": "color" },
+      "muted": { "value": "#8B5E3C", "type": "color" }
+    },
+    "brand": {
+      "leather": { "value": "#8B5E3C", "type": "color" },
+      "wax": { "value": "#A94442", "type": "color" },
+      "moss": { "value": "#556B2F", "type": "color" }
+    },
+    "shadow": {
+      "soft": { "value": "rgba(44, 36, 27, 0.2)", "type": "color" }
+    }
+  },
+  "fontFamily": {
+    "hand": { "value": "'Nanum Pen Script', 'Caveat', cursive", "type": "fontFamilies" },
+    "body": { "value": "'Gangwon Edu All', 'Nanum Pen Script', cursive", "type": "fontFamilies" }
+  },
+  "borderRadius": {
+    "rough": { "value": "2px 5px 3px 4px", "type": "borderRadius" }
+  }
+}

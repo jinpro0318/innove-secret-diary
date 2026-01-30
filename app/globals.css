@@ -1,0 +1,78 @@
+@import './variables.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-family-hand: var(--font-nanum), var(--font-caveat), cursive;
+  --font-family-body: var(--font-nanum), cursive;
+}
+
+body {
+  background-color: #2c241b; /* Dark wood desk background */
+  background-image: 
+    radial-gradient(#3c342b 15%, transparent 16%),
+    radial-gradient(#3c342b 15%, transparent 16%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  min-height: 100vh;
+  perspective: 1500px; /* Enable 3D space */
+  overflow-x: hidden;
+}
+
+@layer components {
+  /* 3D Book Styles */
+  .book-container {
+    @apply relative w-[90vw] max-w-5xl h-[85vh] mx-auto transition-transform duration-700 ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  .book-cover {
+    @apply absolute inset-0 bg-brand-leather rounded-r-xl shadow-2xl origin-left transition-transform duration-1000 ease-in-out z-50;
+    transform-style: preserve-3d;
+    background-image: linear-gradient(90deg, rgba(0,0,0,0.2) 0%, rgba(255,255,255,0.1) 2%, rgba(0,0,0,0.1) 5%, transparent 10%);
+  }
+
+  .book-cover::after {
+    content: '';
+    @apply absolute inset-0 rounded-r-xl;
+    background: linear-gradient(to right, rgba(0,0,0,0.4), transparent 20px);
+  }
+
+  .book-page {
+    @apply absolute inset-y-4 right-4 left-6 bg-bg-parchment shadow-md origin-left transition-transform duration-700 ease-in-out;
+    background-image: 
+      linear-gradient(to right, rgba(0,0,0,0.1), transparent 30px),
+      repeating-linear-gradient(transparent, transparent 2.4rem, rgba(0,0,0,0.05) 2.4rem, rgba(0,0,0,0.05) 2.5rem);
+  }
+
+  /* Left Page (Static) */
+  .page-left {
+    @apply left-4 right-[50%] rounded-l-md border-r border-gray-300;
+    background-image: linear-gradient(to left, rgba(0,0,0,0.1), transparent 30px);
+  }
+
+  /* Right Page (Static) */
+  .page-right {
+    @apply left-[50%] right-4 rounded-r-md;
+  }
+
+  /* Interactive Elements */
+  .btn-stamp {
+    @apply bg-bg-parchment border-2 border-dashed border-brand-leather px-6 py-2 rounded-rough shadow-soft transform -rotate-2 hover:rotate-0 transition-transform duration-200 text-lg font-hand cursor-pointer active:scale-95;
+  }
+
+  .ribbon-marker {
+    @apply absolute -top-4 right-12 w-8 h-48 bg-brand-wax shadow-md origin-top transition-transform duration-300 hover:scale-y-110 cursor-pointer z-40;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+  }
+}
+
+/* Utilities for 3D states */
+.book-open .book-cover {
+  transform: rotateY(-160deg);
+}
+
+.book-open .book-container {
+  transform: translateX(15%); /* Shift to center the open pages */
+}
