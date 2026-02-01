@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FDF5E6;
+  --foreground: #4A4A4A;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* For this specific app, we might want to keep the paper feel even in dark mode, 
+       or invert it carefully. Let's keep it light/warm for now as requested "pastel/soft" 
+       but provide a slightly darker paper for dark mode if needed. 
+       For now, let's stick to the warm paper theme as primary. */
+    --background: #2D2A26; 
+    --foreground: #E0D6C8;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-hand), cursive;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar for Diary feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #B39EB5;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD1DC;
+}
