@@ -10,7 +10,7 @@ interface VoiceRecorderProps {
 
 export const VoiceRecorder = ({ onTranscript }: VoiceRecorderProps) => {
   const [isRecording, setIsRecording] = useState(false);
-  const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
+  const [recognition, setRecognition] = useState<any>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
