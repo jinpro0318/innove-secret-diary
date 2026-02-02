@@ -4,8 +4,12 @@ import { NextResponse } from "next/server";
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function POST(req: Request) {
+  let userContent = "";
+  
   try {
-    const { content, imageUrl } = await req.json();
+    const body = await req.json();
+    const { content, imageUrl } = body;
+    userContent = content || "";
 
     if (!content && !imageUrl) {
       return NextResponse.json(
@@ -66,10 +70,9 @@ export async function POST(req: Request) {
     
     // Fallback: Use original content if API fails
     // This prevents the "content changed completely" issue when API key is missing
-    const requestBody = await req.clone().json().catch(() => ({ content: "" }));
     
     return NextResponse.json({
-      rewritten_content: requestBody.content || "일기 내용을 입력해주세요.",
+      rewritten_content: userContent || "일기 내용을 입력해주세요.",
       mood: "Peaceful",
       keywords: ["Daily", "Memory", "Life"],
       color: "#FDF5E6", // Default paper color
